@@ -1,0 +1,36 @@
+a) -sigma(dotproduct(y_w, y_hat_w)) = = -dotproduct(y_0, y_hat_0) -dotproduct(y_1, y_hat_1) - ... -dotproduct(y_o, y_hat_o) ... -dotproduct(y_w, y_hat_w) = :
+Since Y is equal to 1 only at o and otherwise zero: 
+= -dotproduct(0, y_hat_0) -dotproduct(0, y_hat_1) - ... -dotproduct(1, y_hat_o) ... -dotproduct(0, y_hat_w) = -y_hat_o
+
+b) solution here: https://stats.stackexchange.com/questions/253244/gradients-for-skipgram-word2vec
+
+c) the same as the solution above just now we will have vc on the outside scope, meaning: v_c * (y_hat - y)
+
+d) d(sigmoid(x))/dx = d(exp(x)/(exp(x) + 1))/dx = (exp(x) * (exp(x) + 1) - exp(x) * exp(x)) / ((exp(x) + 1)^2) = exp(x) / ((exp(x) + 1) ^ 2) = 
+multiplication of two fractions of :
+= (exp(x) / (exp(x) + 1)) * (1 / (exp(x) + 1)) = sigmoid(x) * sigmoid(-x)
+however it's known that sigmoid(-x) = 1 - sigmoid(x) (also a shor calculation can show that, therefore): 
+= sigmoid(x) * (1 - sigmoid(x))
+
+e) Done by myself, using chain rule, got: 
+
+1)
+(dJneg_sampling / dsigmoid) * (dsigmoid / du_o) = v_c  * (1 - sigmoid(u_o*v_c))
+
+2)
+(dJneg_sampling / dsigmoid) * (dsigmoid / dv_c) = (u_o  * (1 - sigmoid(u_o*v_c))) + sigma(u_k * sigmoid(u_k*v_c))
+
+3) 
+(dJneg_sampling / dsigmoid) * (dsigmoid / du_k) = sigma(v_c * sigmoid(u_k * v_c))
+
+Also (1 and 3) online in: https://stackoverflow.com/questions/49745192/correct-gradients-for-word2vec-negative-sampling-skip-gram-model
+https://github.com/jon-tow/cs224n/blob/master/a2/written.pdf
+
+This is much faster, cause in the negative sampling we take only sample out of the negative example and all the vocubalry
+
+f) 
+1) same partial in parts of sigma (sum)
+2) same partial in parts of sigma (sum)
+3) 0
+
+Also: https://github.com/jon-tow/cs224n/blob/master/a2/written.pdf

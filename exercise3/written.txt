@@ -1,1 +1,20 @@
+1) 
+a) 
+1) This techniques makes the variance smaller, allowing you to move more towards the bias in the bias vs variance tradeoff, this might be helpful with certain models. 
+Also in: http://web.stanford.edu/class/cs224n/assignments/a3.pdf
+2) http://web.stanford.edu/class/cs224n/assignments/a3.pdf
 
+b) 
+1) in order to save the average the same gamma should be: gamma = 1 / (1 - p_drop)
+2) dropout is made to ameliorate over fitting, when used in training it help to build a better model, but if you use it in test then you simply throw a good part of your information. 
+
+2)
+a) I had made it pretty much the same: https://github.com/jon-tow/cs224n/blob/master/a3/written.pdf
+b) O(n) and more particularly 2n steps, because each word need a shif step and an arch step
+
+...
+
+f) 1) "wedding"'s head should be "disembarked". therefore it is a Prepositional Phrase attachment error
+2) "resue"'s head should be rush. This is a Coordination attachment error
+3) I am not sure
+4) "success"'s head should be the "root", therefore it is a verb attachment error 
